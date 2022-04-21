@@ -9,6 +9,7 @@ def main(args=None):
 	# rclpy.spin(my_controller_publisher)
 	rclpy.spin_once(my_controller_subscriber)
 
+	myImage = my_controller_subscriber.GetImage()
 	# my_controller_publisher.destry_node()
 	my_controller_subscriber.destroy_node()
 	rclpy.shutdown
