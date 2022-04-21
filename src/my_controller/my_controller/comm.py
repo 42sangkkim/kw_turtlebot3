@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
+from sensor_msge.msg import image
 
 class ClientPublisher(Node):
 	def __init__(self):
@@ -19,8 +20,8 @@ class ClientPublisher(Node):
 
 class ClientSubscriber(Node):
 	def __init__(self):
-		super().__init__('client_subscriber')
-		self.subscriber = self.create_subscription(String, 'server2client', self.listener_callback, 10)
+		super().__init__('my_comtroller_sub')
+		self.subscriber = self.create_subscription(String, '/camera/image_raw', self.listener_callback, 10)
 
 	def listener_callback(self, msg):
 		self.get_logger().info('Subscribed: %s' % msg.data)
