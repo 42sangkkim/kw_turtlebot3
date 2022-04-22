@@ -11,7 +11,9 @@ def main(args=None):
 	rclpy.spin_once(my_controller_subscriber)
 
 	myImage = my_controller_subscriber.GetImage() # Cv2Image
-	cv2.imgshow("My Image", myImage)
+	cv2.namedWindow("My Image", flags=cv2.WINDOW_NORMAL)
+	cv2.resizeWindow(winname="My Image", width=320, height=180)
+	cv2.imshow("My Image", myImage)
 	cv2.waitKey(0)
 
 	# my_controller_publisher.destry_node()

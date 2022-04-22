@@ -24,7 +24,7 @@ class ClientSubscriber(Node):
 	def __init__(self):
 		super().__init__('my_comtroller_sub')
 		self.subscribtionImg = self.create_subscription(Image, '/camera/image_raw', self.listener_Img_callback, 10)
-		self.subscribtionImu = self.create_subscription(Imu, '/imu', self.listener_Imu_callback, 10)
+		# self.subscribtionImu = self.create_subscription(Imu, '/imu', self.listener_Imu_callback, 10)
 		self.Cv2Image = None
 		self.CvBridge = CvBridge()
 
@@ -32,7 +32,7 @@ class ClientSubscriber(Node):
 		self.get_logger().info('[Image]Subscribed: width %s' % msg.width)
 		self.get_logger().info('[Image]Subscribed: height %s' % msg.height)
 		# self.get_logger().info('[Image]Subscribed: data %s' % msg.data)
-		self.Cv2Image = self.CvBridge.imgmsg_to_cv2(msg)
+		self.Cv2Image = self.CvBridge.imgmsg_to_cv2(msg, "bgr8")
 
 	def listener_Imu_callback(self, msg):
 		self.get_logger().info('[IMU]Subscribed: linear %s' % msg.linear_acceleration)
