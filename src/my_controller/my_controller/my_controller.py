@@ -13,7 +13,7 @@ def main(args=None):
 		rclpy.spin_once(my_controller_subscriber)
 		myImage = my_controller_subscriber.GetImage() # Cv2Image
 		cv2.imshow("My Image", myImage)
-		cv2.waitKey(0)
+		keyin = cv2.waitKey(1)
 		if (keyin == ord('w')):
 			my_controller_publisher.set_velocity(0.1, 0.0) # move forward
 		elif (keyin == ord('a')):
@@ -25,7 +25,7 @@ def main(args=None):
 		elif (keyin == 32): # space bar
 			my_controller_publisher.set_velocity(0.0, 0.0) # stop
 
-		elif (keyin = ord('q')): # quit
+		elif (keyin == ord('q')): # quit
 			break
 
 	my_controller_publisher.destry_node()
